@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video</title>
+<style>
+body{margin:0;background:#000}
+video{width:100%;height:auto}
+</style>
+</head>
+<body>
+
+<video id="vid" controls playsinline>
+  <source src="https://cdn2.videy.co/B4To60BW1.mp4" type="video/mp4">
+</video>
+
+<script>
+const ads = "https://omg10.com/4/10426288";
+const vid = document.getElementById("vid");
+
+let first = true;
+let lastAd = 0;
+
+function openAd(){
+  const now = Date.now();
+  if(now - lastAd > 20000){
+    lastAd = now;
+    window.open(ads, "_blank");
+  }
+}
+
+vid.addEventListener("play", function(){
+  if(first){
+    first = false;
+    setTimeout(() => {
+      openAd();
+    }, 1500);
+  } else {
+    openAd();
+  }
+});
+</script>
+
+</body>
+</html>
